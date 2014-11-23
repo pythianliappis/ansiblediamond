@@ -1,0 +1,41 @@
+---
+- name: Install EPEL
+  yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+
+- name: Install python-pip
+  yum: name=python-pip state=present
+
+- name: Install python-statsd pip module
+  pip: name=python-statsd
+
+- name: Install required devtools for building
+  yum: name={{item}} state=present
+  with_items:
+    - gcc
+    - rpm-build
+    - python-mock
+    - python-configobj
+    - git
+    - libselinux-python
+
+- name: Checkout url from gitrepo
+  git: repo={{diamond_git_repo_url}} dest=~/Diamond
+  register: diamondrepo_status
+
+- name: Build Diamond from source
+  command: make buildrpm
+  args:
+    chdir: ~/Diamond
+
+- name: Locate built rpm file of Diamond
+  shell: ls -1 ~/Diamond/dist/diamond-*noarch.rpm
+  register: diamondrpmfile
+
+- assert:
+    that:
+      - "diamondrpmfile.changed == True"
+
+- name: Install diamond rpm package
+  yum: name={{item}} state=present
+  with_items: diamondrpmfile.stdout_lines
+

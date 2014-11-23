@@ -1,0 +1,49 @@
+---
+- name: OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Include collector definitions
+  include_vars: "collector_definitions.yml"
+
+- name: Check if diamond is installed
+  stat: path=/etc/diamond/diamond.conf
+  register: checkdiamondconffile
+
+- name: Check if diamond is running
+  shell: pgrep diamond
+  register: checkdiamondprocess
+  ignore_errors: true
+
+# Install prebuilt diamond on Debian
+- include: setup-Debian-bin.yml
+  when: ansible_os_family == 'Debian' and build_from_source == false
+
+# Build Diamond from source
+- include: setup-Debian-source.yml
+  when: ansible_os_family == 'Debian' and build_from_source == true and not checkdiamondconffile.stat.exists and checkdiamondprocess|failed
+
+# Build Diamond from source
+- include: setup-RedHat-source.yml
+  when: ansible_os_family == 'RedHat' and build_from_source == true and not checkdiamondconffile.stat.exists and checkdiamondprocess|failed
+
+# Common for both OS's
+
+- name: Update diamond.conf with latest template content
+  template: src=diamond.conf dest="{{diamond_conf_basepath}}" backup=yes
+  register: diamondconffilestate
+
+- name: Configuring collector {{item.key}}
+  template: src=diamondcollectorconf.j2 dest="{{collector_conf_path}}/{{item.key}}.conf"
+  with_dict: diamond_collector_default_defs
+  when: "item.key not in diamond_collector_extra_defs.keys()"
+  register: defaultdiamondcollectorsstate
+
+- name: Configuring collector {{item.key}}
+  template: src=diamondcollectorconf.j2 dest="{{collector_conf_path}}/{{item.key}}.conf"
+  with_dict: diamond_collector_extra_defs
+  register: extradiamondcollectorsstate
+
+- name: Restart diamond if config has changed
+  service: name=diamond state=restarted
+  when: defaultdiamondcollectorsstate.changed or extradiamondcollectorsstate.changed or diamondconffilestate.changed or checkdiamondprocess|failed
+

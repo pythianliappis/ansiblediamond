@@ -1,0 +1,39 @@
+---
+- name: Install python-pip
+  apt: pkg=python-pip state=installed update_cache=yes cache_valid_time=36000
+
+- name: Install python-statsd pip module
+  pip: name=python-statsd
+
+- name: Install required devtools for building
+  apt: pkg={{item}} state=installed
+  with_items:
+    - make
+    - pbuilder
+    - python-mock
+    - python-configobj
+    - python-support
+    - cdbs
+    - git
+
+- name: Checkout url from gitrepo
+  git: repo={{diamond_git_repo_url}} dest=~/Diamond
+  register: diamondrepo_status
+
+- name: Build Diamond from source
+  command: make builddeb
+  args:
+    chdir: ~/Diamond
+
+- name: Locate built deb file of Diamond
+  shell: ls -1 ~/Diamond/build/diamond_*_all.deb
+  register: diamonddebfile
+
+- assert:
+    that:
+      - "diamonddebfile.changed == True"
+
+- name: Install diamond deb package
+  apt: deb={{item}} state=installed
+  with_items: diamonddebfile.stdout_lines
+

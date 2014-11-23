@@ -1,0 +1,319 @@
+diamond_collector_default_defs:
+  Uptime:
+    enabled: True
+  ApcupsdCollector:
+    enabled: False
+  BeanstalkdCollector:
+    enabled: False
+  BindCollector:
+    enabled: False
+  CelerymonCollector:
+    enabled: False
+  CephCollector:
+    enabled: False
+  ChronydCollector:
+    enabled: False
+  ConnTrackCollector:
+    enabled: False
+  CpuAcctCgroupCollector:
+    enabled: False
+  CPUCollector:
+    enabled: True
+    ttl_multiplier: 2
+    normalize: False
+    measure_collector_time: False
+    byte_unit: "byte,"
+    simple: False
+    percore: True
+    path_suffix: ""
+  DarnerCollector:
+    enabled: False
+  DiskSpaceCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    exclude_filters: "^/export/home,"
+    byte_unit: "byte,"
+    filesystems: "ext2, ext3, ext4, xfs, glusterfs, nfs, ntfs, hfs, fat32, fat16, btrfs"
+  DiskUsageCollector:
+    enabled: True
+    ttl_multiplier: 2
+    sector_size: 512
+    measure_collector_time: False
+    byte_unit: "byte,"
+    send_zero: False
+    devices: 'PhysicalDrive[0-9]+$|md[0-9]+$|sd[a-z]+[0-9]*$|x?vd[a-z]+[0-9]*$|disk[0-9]+$|dm\-[0-9]+$'
+    path_suffix: ""
+  DRBDCollector:
+    enabled: False
+  DropwizardCollector:
+    enabled: False
+  DseOpsCenterCollector:
+    enabled: False
+  ElasticSearchCollector:
+    enabled: False
+  ElbCollector:
+    enabled: False
+  EndecaDgraphCollector:
+    enabled: False
+  EntropyStatCollector:
+    enabled: False
+  ExampleCollector:
+    enabled: False
+  EximCollector:
+    enabled: False
+  FilesCollector:
+    enabled: False
+  FilestatCollector:
+    enabled: False
+  FlumeCollector:
+    enabled: False
+  GridEngineCollector:
+    enabled: False
+  HadoopCollector:
+    enabled: False
+  HAProxyCollector:
+    enabled: False
+    ttl_multiplier: 2
+    ignore_servers: False
+    measure_collector_time: False
+    byte_unit: "byte,"
+    url: "http://localhost/haproxy?stats;csv"
+    user: admin
+    pass: password
+    path_suffix: ""
+  HBaseCollector:
+    enabled: False
+  HttpCollector:
+    enabled: False
+  HttpdCollector:
+    enabled: False
+  HTTPJSONCollector:
+    enabled: False
+  IcingaStatsCollector:
+    enabled: False
+  InterruptCollector:
+    enabled: False
+  IODriveSNMPCollector:
+    enabled: False
+  IPCollector:
+    enabled: False
+  IPMISensorCollector:
+    enabled: False
+  IPVSCollector:
+    enabled: False
+  JbossApiCollector:
+    enabled: False
+  JCollectdCollector:
+    enabled: False
+  JolokiaCollector:
+    enabled: False
+  KafkaCollector:
+    enabled: False
+  KSMCollector:
+    enabled: False
+  KVMCollector:
+    enabled: False
+  LibvirtKVMCollector:
+    enabled: False
+  LMSensorsCollector:
+    enabled: False
+  LoadAverageCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+    simple: False
+  MemcachedCollector:
+    enabled: False
+  MemoryCgroupCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+    skip: ","
+    memory_path: "/sys/fs/cgroup/memory/"
+  MemoryCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+  MemoryLxcCollector:
+    enabled: False
+  MongoDBCollector:
+    enabled: False
+    byte_unit: "byte,"
+    simple: False
+    ttl_multiplier: 2
+    measure_collector_time: False
+    ignore_collections: '^tmp\.mr\.'
+    hosts: "localhost,"
+    path_suffix: ""
+    ssl: False
+    translate_collections: False
+    collection_sample_rate: 1
+    databases: .*
+  MonitCollector:
+    enabled: False
+  MountStatsCollector:
+    enabled: False
+  MySQLCollector:
+    enabled: False
+  MySQLPerfCollector:
+    enabled: False
+  NagiosPerfdataCollector:
+    enabled: False
+  NagiosStatsCollector:
+    enabled: False
+  NetAppCollector:
+    enabled: False
+  netappDisk:
+    enabled: False
+  netapp_inode:
+    enabled: False
+  NetscalerSNMPCollector:
+    enabled: False
+  NetworkCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "bit, byte"
+    interfaces: "eth, bond, em, p1p"
+    greedy: true
+  NfsCollector:
+    enabled: False
+  NfsdCollector:
+    enabled: False
+  NginxCollector:
+    enabled: False
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+    req_port: 8080
+    req_host: localhost
+    req_path: "/nginx_status"
+  NtpdCollector:
+    enabled: False
+  NumaCollector:
+    enabled: False
+  OneWireCollector:
+    enabled: False
+  OpenLDAPCollector:
+    enabled: False
+  OpenstackSwiftCollector:
+    enabled: False
+  OpenstackSwiftReconCollector:
+    enabled: False
+  OpenVPNCollector:
+    enabled: False
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+    instances: "/etc/openvpn/openvpn-status.log"
+    timeout: 10
+  OssecCollector:
+    enabled: False
+  PassengerCollector:
+    enabled: False
+  PhpFpmCollector:
+    enabled: False
+  PingCollector:
+    enabled: False
+  PostfixCollector:
+    enabled: False
+  PostgresqlCollector:
+    enabled: False
+  PostqueueCollector:
+    enabled: False
+  PowerDNSCollector:
+    enabled: False
+  ProcessResourcesCollector:
+    enabled: False
+  ProcessStatCollector:
+    enabled: False
+  PuppetAgentCollector:
+    enabled: False
+  PuppetDashboardCollector:
+    enabled: False
+  PuppetDBCollector:
+    enabled: False
+  RabbitMQCollector:
+    enabled: False
+  RedisCollector:
+    enabled: False
+  ResqueWebCollector:
+    enabled: False
+  S3BucketCollector:
+    enabled: False
+  ServerTechPDUCollector:
+    enabled: False
+  SidekiqWebCollector:
+    enabled: False
+  SlabInfoCollector:
+    enabled: False
+  SmartCollector:
+    enabled: False
+  SNMPCollector:
+    enabled: False
+  SNMPInterfaceCollector:
+    enabled: False
+  SNMPRawCollector:
+    enabled: False
+  SockstatCollector:
+    enabled: False
+  SoftInterruptCollector:
+    enabled: False
+  SolrCollector:
+    enabled: False
+  SqsCollector:
+    enabled: False
+  SquidCollector:
+    enabled: False
+  SupervisordCollector:
+    enabled: False
+  TCPCollector:
+    enabled: False
+  TokuMXCollector:
+    enabled: False
+  UDPCollector:
+    enabled: False
+  UnboundCollector:
+    enabled: False
+  UPSCollector:
+    enabled: False
+  UptimeCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+    metric_name: minutes
+  UsersCollector:
+    enabled: False
+  UserScriptsCollector:
+    enabled: False
+  VarnishCollector:
+    enabled: False
+  VMSDomsCollector:
+    enabled: False
+  VMSFSCollector:
+    enabled: False
+  VMStatCollector:
+    enabled: True
+    ttl_multiplier: 2
+    path_suffix: ""
+    measure_collector_time: False
+    byte_unit: "byte,"
+  WebsiteMonitorCollector:
+    enabled: False
+  XENCollector:
+    enabled: False
+  ZookeeperCollector:
+    enabled: False

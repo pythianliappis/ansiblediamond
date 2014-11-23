@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Dimitrios Liappis
+  description: Ansible role to install Brightcove diamond from source or prebuilt package
+  company: Pythian
+  license: Apache
+  min_ansible_version: 1.6
+  platforms:
+  - name: EL
+    versions:
+      - 6
+  - name: Ubuntu
+    versions:
+      - trusty
+  - name: Debian
+    versions:
+      - wheezy
+  categories:
+  - monitoring
+  - system
+dependencies: []

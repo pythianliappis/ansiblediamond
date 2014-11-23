@@ -1,0 +1,16 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    build_from_source: true
+    statsdhandler:
+      enable: True
+      # Example picking up graphite server with ec2 tag name graphite
+      #host: "{{hostvars[groups['tag_Name_graphite'][0]]['inventory_hostname']}}"
+      host: 127.0.0.1
+      port: 8125
+    diamond_collector_extra_defs:
+      ZookeeperCollector:
+        enabled: False
+  roles:
+    - dliappis.diamond
