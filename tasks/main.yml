@@ -46,4 +46,3 @@
 - name: Restart diamond if config has changed
   service: name=diamond state=restarted
   when: defaultdiamondcollectorsstate.changed or extradiamondcollectorsstate.changed or diamondconffilestate.changed or checkdiamondprocess|failed
-

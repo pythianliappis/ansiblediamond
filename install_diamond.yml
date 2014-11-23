@@ -13,4 +13,4 @@
       ZookeeperCollector:
         enabled: False
   roles:
-    - dliappis.diamond
+    - liappis.diamond

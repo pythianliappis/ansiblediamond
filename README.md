@@ -122,7 +122,7 @@ See the included playbook install_debian.yml
           ZookeeperCollector:
             enabled: False
       roles:
-        - dliappis.diamond
+        - liappis.diamond
 
 
 # License #
