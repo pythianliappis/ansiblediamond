@@ -89,7 +89,7 @@ To enable it, in our playbook, in the vars: section we define:
 
     diamond_collector_extra_defs:
       ZookeeperCollector:
-        enabled: False
+        enabled: True
 
 ### Example2: also enable RabbitMQCollector -- disabled by default ###
 
@@ -97,9 +97,9 @@ Again have a look at vars/collector_definitions.yml to see how this is defined a
 
     diamond_collector_extra_defs:
       ZookeeperCollector:
-        enabled: False
+        enabled: True
       RabbitMQCollector:
-        enabled: False
+        enabled: True
 
 # Dependencies #
 
