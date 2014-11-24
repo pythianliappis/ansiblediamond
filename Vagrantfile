@@ -52,7 +52,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "trusty64libvirt" do |dist_config|
-    dist_config.vm.network :public_network, :dev => "br0", :mode => "bridge"
     dist_config.vm.box = "baremettle/ubuntu-14.04"
     dist_config.vm.provision "ansible" do |ansible|
       ansible.playbook = "install_diamond.yml"
@@ -62,7 +61,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "debian75libvirt" do |dist_config|
-    dist_config.vm.network :public_network, :dev => "br0", :mode => "bridge"
     dist_config.vm.box = "baremettle/debian-7.5"
     dist_config.vm.provision "ansible" do |ansible|
       ansible.playbook = "install_diamond.yml"
@@ -72,7 +70,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "centos65libvirt" do |dist_config|
-    dist_config.vm.network :public_network, :dev => "br0", :mode => "bridge"
     dist_config.vm.box = "dliappis/centos65minlibvirt"
     dist_config.vm.provision "ansible" do |ansible|
       ansible.playbook = "install_diamond.yml"

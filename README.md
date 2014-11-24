@@ -124,6 +124,25 @@ See the included playbook install_debian.yml
       roles:
         - liappis.diamond
 
+# Testing with Vagrant #
+
+There are a number of vagrant machines defined.
+If you have just pulled this role from github make sure it is under a directory called roles.
+If you've installed it via `ansible-galaxy install liappis.diamond` that should have been taken care for you.
+
+After executing any of the following you should get a VM running diamond and shipping metrics to localhost port 8125 via the statsd protocol.
+
+## For virtualbox ##
+
+* CentOS65: `vagrant up centos65virtualbox`
+* Ubunty Trusty: `vagrant up trustyvirtualbox`
+* Debian Wheezy: `vagrant up debianwheezyvirtualbox`
+
+## For libvirt ##
+
+* CentOS65: `vagrant up centos64libvirt`
+* Ubuntu Trusty: `vagrant up trusty64libvirt`
+* Debian Wheezy: `vagrant up debian75libvirt`
 
 # License #
 
