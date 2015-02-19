@@ -29,7 +29,7 @@
 # Common for both OS's
 
 - name: Update diamond.conf with latest template content
-  template: src=diamond.conf dest="{{diamond_conf_basepath}}" backup=yes
+  template: src=diamond.conf dest="{{diamond_conf_basepath}}/diamond.conf" backup=yes
   register: diamondconffilestate
 
 - name: Configuring collector {{item.key}}
