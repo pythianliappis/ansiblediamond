@@ -15,5 +15,7 @@ statsdhandler:
   enable: True
   host: tbd
   port: 8125
+interval: 30
+path_prefix: "servers"
 # Override this from your playbook
 diamond_collector_extra_defs:
