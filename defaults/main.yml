@@ -17,5 +17,6 @@ statsdhandler:
   port: 8125
 interval: 30
 path_prefix: "servers"
+hostname_method: "fqdn"
 # Override this from your playbook
 diamond_collector_extra_defs:
