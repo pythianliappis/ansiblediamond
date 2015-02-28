@@ -15,8 +15,8 @@ statsdhandler:
   enable: True
   host: tbd
   port: 8125
-interval: 30
+interval: 300
 path_prefix: "servers"
-hostname_method: "fqdn"
+hostname_method: "fqdn_short"
 # Override this from your playbook
 diamond_collector_extra_defs:
