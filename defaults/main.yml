@@ -2,6 +2,7 @@
 # If false you need to place the prebuilt package under files/ and specify the diamond_version variable
 build_from_source: true
 diamond_git_repo_url: https://github.com/python-diamond/Diamond
+diamond_git_repo_version: a1fb8f8d0b7a21842ec82b7ba3289511043e07ba
 # Version of prebuilt package, if build_from_source: true
 diamond_version: "3.5.8"
 diamond_conf_basepath: "/etc/diamond"
