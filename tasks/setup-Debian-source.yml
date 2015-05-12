@@ -17,7 +17,10 @@
     - git
 
 - name: Checkout url from gitrepo
-  git: repo={{diamond_git_repo_url}} dest=~/Diamond
+  git:
+    repo: "{{diamond_git_repo_url}}"
+    dest: ~/Diamond
+    accept_hostkey: true
 
 - name: Build Diamond from source
   command: make builddeb
