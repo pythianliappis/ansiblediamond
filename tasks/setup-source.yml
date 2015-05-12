@@ -1,0 +1,7 @@
+# Build Diamond from source on Debian
+- include: setup-Debian-source.yml
+  when: ansible_os_family == 'Debian' and build_from_source == true
+
+# Build Diamond from source on Rehat
+- include: setup-RedHat-source.yml
+  when: ansible_os_family == 'RedHat' and build_from_source == true

@@ -41,3 +41,8 @@
 - name: Install diamond deb package
   apt: deb={{item}} state=installed
   with_items: diamonddebfile.stdout_lines
+
+- name: Write version file
+  copy:
+    content: "{{ diamond_git_repo_version }}"
+    dest: "{{ diamond_conf_version }}"

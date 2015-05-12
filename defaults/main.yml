@@ -6,6 +6,7 @@ diamond_git_repo_version: a1fb8f8d0b7a21842ec82b7ba3289511043e07ba
 # Version of prebuilt package, if build_from_source: true
 diamond_version: "3.5.8"
 diamond_conf_basepath: "/etc/diamond"
+diamond_conf_version: "{{diamond_conf_basepath}}/version"
 collector_conf_path: "{{diamond_conf_basepath}}/collectors"
 diamond_handlers_path: "/usr/share/pyshared/diamond/handler/"
 graphitehandler:

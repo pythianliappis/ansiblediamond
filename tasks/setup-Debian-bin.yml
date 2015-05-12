@@ -11,3 +11,7 @@
 - name: Install python-statsd pip module
   pip: name=python-statsd
 
+- name: Write version file
+  copy:
+    content: "{{ diamond_version }}"
+    dest: "{{ diamond_conf_version }}"
