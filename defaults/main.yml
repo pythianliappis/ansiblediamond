@@ -1,7 +1,7 @@
 ---
 # If false you need to place the prebuilt package under files/ and specify the diamond_version variable
 build_from_source: true
-diamond_git_repo_url: https://github.com/BrightcoveOS/Diamond.git
+diamond_git_repo_url: https://github.com/python-diamond/Diamond
 # Version of prebuilt package, if build_from_source: true
 diamond_version: "3.5.8"
 diamond_conf_basepath: "/etc/diamond"
