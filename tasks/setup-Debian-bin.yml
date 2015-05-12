@@ -7,7 +7,6 @@
 
 - name: Install python-pip
   apt: pkg=python-pip state=installed update_cache=yes
-  #apt: pkg=python-pip state=installed
 
 - name: Install python-statsd pip module
   pip: name=python-statsd

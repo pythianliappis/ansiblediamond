@@ -18,7 +18,6 @@
 
 - name: Checkout url from gitrepo
   git: repo={{diamond_git_repo_url}} dest=~/Diamond
-  register: diamondrepo_status
 
 - name: Build Diamond from source
   command: make builddeb
@@ -36,4 +35,3 @@
 - name: Install diamond deb package
   apt: deb={{item}} state=installed
   with_items: diamonddebfile.stdout_lines
-
