@@ -23,7 +23,6 @@
     repo: "{{diamond_git_repo_url}}"
     dest: ~/Diamond
     accept_hostkey: true
-    depth: 10
     version: "{{diamond_git_repo_version}}"
     force: true
 
