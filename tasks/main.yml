@@ -1,7 +1,4 @@
 ---
-- name: OS-specific variables
-  include_vars: "{{ ansible_os_family }}.yml"
-
 - name: Include collector definitions
   include_vars: "collector_definitions.yml"
 
