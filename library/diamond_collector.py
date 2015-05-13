@@ -23,7 +23,7 @@ def main():
 
     config = ""
 
-    for (k, v) in params['config'].iteritems():
+    for (k, v) in collections.OrderedDict(sorted(params['config'].items())).iteritems():
         config += "%s=%s\n" % (k, v)
 
     if os.path.exists(config_file):
@@ -37,6 +37,7 @@ def main():
     module.exit_json(changed=True)
 
 from ansible.module_utils.basic import *
+import collections
 
 if __name__ == '__main__':
     main()
