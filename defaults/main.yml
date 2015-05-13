@@ -21,4 +21,4 @@ interval: 300
 path_prefix: "servers"
 hostname_method: "fqdn_short"
 # Override this from your playbook
-diamond_collector_extra_defs:
+diamond_collector_extra_defs: {}
