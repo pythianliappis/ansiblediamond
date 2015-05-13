@@ -1,6 +1,3 @@
-{# pprint helps debugging #}
-{# {{item['value']|pprint}}  #}
-{# {% for (k1,v1) in item['value'].iteritems() %} #}
 {% for (k1,v1) in item['value']|dictsort %}
-{{k1}}={{v1}}  
-{% endfor %}  
+{{k1}}={{v1}}
+{% endfor %}
