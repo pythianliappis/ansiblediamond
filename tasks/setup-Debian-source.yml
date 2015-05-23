@@ -17,8 +17,12 @@
     - git
 
 - name: Checkout url from gitrepo
-  git: repo={{diamond_git_repo_url}} dest=~/Diamond
-  register: diamondrepo_status
+  git:
+    repo: "{{diamond_git_repo_url}}"
+    dest: ~/Diamond
+    accept_hostkey: true
+    version: "{{diamond_git_repo_version}}"
+    force: true
 
 - name: Build Diamond from source
   command: make builddeb
@@ -37,3 +41,7 @@
   apt: deb={{item}} state=installed
   with_items: diamonddebfile.stdout_lines
 
+- name: Write version file
+  copy:
+    content: "{{ diamond_git_repo_version }}"
+    dest: "{{ diamond_conf_version }}"

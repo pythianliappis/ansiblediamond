@@ -19,8 +19,12 @@
     - libselinux-python
 
 - name: Checkout url from gitrepo
-  git: repo={{diamond_git_repo_url}} dest=~/Diamond
-  register: diamondrepo_status
+  git:
+    repo: "{{diamond_git_repo_url}}"
+    dest: ~/Diamond
+    accept_hostkey: true
+    version: "{{diamond_git_repo_version}}"
+    force: true
 
 - name: Build Diamond from source
   command: make buildrpm
@@ -39,3 +43,7 @@
   yum: name={{item}} state=present
   with_items: diamondrpmfile.stdout_lines
 
+- name: Write version file
+  copy:
+    content: "{{ diamond_version }}"
+    dest: "{{ diamond_conf_version }}"
