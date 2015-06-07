@@ -32,18 +32,22 @@
     - restart diamond
 
 - name: Configuring default collectors
-  diamond_collector:
-    name: "{{ item.key }}"
-    config: "{{ item.value }}"
+  template: src=diamondcollectorconf.j2 dest="{{collector_conf_path}}/{{item.key}}.conf"
+  # As an alternative to the jinja2 template use the diamond_collector module
+  # diamond_collector:
+  #   name: "{{ item.key }}"
+  #   config: "{{ item.value }}"
   with_dict: diamond_collector_default_defs
   when: "item.key not in diamond_collector_extra_defs.keys()"
   notify:
     - restart diamond
 
 - name: Configuring extra collectors
-  diamond_collector:
-    name: "{{ item.key }}"
-    config: "{{ item.value }}"
+  template: src=diamondcollectorconf.j2 dest="{{collector_conf_path}}/{{item.key}}.conf"
+  # As an alternative to the jinja2 template use the diamond_collector module
+  # diamond_collector:
+  #   name: "{{ item.key }}"
+  #   config: "{{ item.value }}"
   with_dict: diamond_collector_extra_defs
   notify:
     - restart diamond
