@@ -53,6 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "trusty64libvirt" do |dist_config|
     dist_config.vm.box = "baremettle/ubuntu-14.04"
+    dist_config.vm.hostname = "trusty64diamond"
     dist_config.vm.provision "ansible" do |ansible|
       ansible.playbook = "install_diamond.yml"
       ansible.verbose = "vv"
@@ -62,6 +63,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "debian75libvirt" do |dist_config|
     dist_config.vm.box = "baremettle/debian-7.5"
+    dist_config.vm.hostname = "debian75diamond"
     dist_config.vm.provision "ansible" do |ansible|
       ansible.playbook = "install_diamond.yml"
       ansible.verbose = "vv"
@@ -71,6 +73,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "centos65libvirt" do |dist_config|
     dist_config.vm.box = "dliappis/centos65minlibvirt"
+    dist_config.vm.hostname = "centos65diamond"
+    dist_config.vm.provision "ansible" do |ansible|
+      ansible.playbook = "install_diamond.yml"
+      ansible.verbose = "vv"
+      ansible.sudo = true
+    end
+  end
+
+  config.vm.define "centos7libvirt" do |dist_config|
+    dist_config.vm.box = "centos7minlibvirt"
+    dist_config.vm.hostname = "centos7diamond"
     dist_config.vm.provision "ansible" do |ansible|
       ansible.playbook = "install_diamond.yml"
       ansible.verbose = "vv"
