@@ -1,6 +1,11 @@
 ---
-- name: Install EPEL
+- name: Install EPEL on RHEL6.x if needed
   yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+  when: ansible_distribution_major_version|int==6
+
+- name: Install EPEL on RHEL7.x if needed
+  yum: name=epel-release state=present
+  when: ansible_distribution_major_version|int==7
 
 - name: Install python-pip
   yum: name=python-pip state=present
