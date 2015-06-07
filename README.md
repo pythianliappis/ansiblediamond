@@ -1,6 +1,6 @@
 # Ansible Role: Diamond #
 
-Ansible role that installs Brightcove's Diamond metric collector on RedHat/CentOS Debian/Ubuntu.
+Ansible role that installs the [Diamond metric collector daemon](https://github.com/python-diamond/Diamond) on RedHat/CentOS Debian/Ubuntu.
 
 # Requirements #
 
@@ -35,7 +35,7 @@ Those are defined in defaults/main.yml:
 Setting this to true will build the latest master branch of BrightcoveOS/Diamond, see below.
 If set to false, currently supports only **Debian/Ubuntu** platforms and expects a prebuilt deb package under files/diamond_<version>_all.deb. See below on specifying the version.
 
-`diamond_git_repo_url: https://github.com/BrightcoveOS/Diamond.git`
+`diamond_git_repo_url: https://github.com/python-diamond/Diamond`
 
 Change this if you'd like to a fork of the Diamond repository; used with `build_from_source: true`
 
@@ -50,6 +50,11 @@ Change this if you'd like to a fork of the Diamond repository; used with `build_
 
 
 As mentioned above, you **must** specify enable: True for one of the above, along with the correct IP / port
+
+`diamond_git_repo_version: "e891f8e1eef6067407f2bb0ddff4973893c33c94"`
+
+When building from source, specify the commit id or a tag.
+The default tag refers to v4.0.
 
 `diamond_version: "3.5.8"`
 
@@ -140,7 +145,8 @@ After executing any of the following you should get a VM running diamond and shi
 
 ## For libvirt ##
 
-* CentOS65: `vagrant up centos64libvirt`
+* CentOS65: `vagrant up centos65libvirt`
+* CentOS7: `vagrant up centos7libvirt`
 * Ubuntu Trusty: `vagrant up trusty64libvirt`
 * Debian Wheezy: `vagrant up debian75libvirt`
 
